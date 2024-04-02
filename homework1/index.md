@@ -10,7 +10,7 @@ In Turkey, it is common for people to buy new clothes before the religious holid
 
 Assuming that people search about these holidays more when the date is close, the Google Trends data for search "Bayram" or "Ramazan" or "Kurban" can be checked.
 
-![Bayram (Holiday) Search Google Trends](bayram google trend plot.PNG)
+![Bayram (Holiday) Search Google Trends](main/homework1/bayram google trend plot.PNG)
 
 ![Clothing Data From TCMB Website](giyim data plot.JPEG)
 
