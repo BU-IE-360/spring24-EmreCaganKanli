@@ -15,19 +15,16 @@ Assuming that people search about these holidays more when the date is close, th
 Clothing Data From TCMB Website
 
 
+![Bayram Search Google Trends](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/bayram%20google%20trend%20plot.png)
 Bayram Search Google Trends
-![Bayram (Holiday) Search Google Trends](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/bayram%20google%20trend%20plot.png)
-Bayram (Holiday) Search Google Trends
 
 
+![Ramazan Search Google Trends](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/ramazan%20trend%20plot.png)
 Ramazan Search Google Trends
-![Bayram (Holiday) Search Google Trends](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/ramazan%20trend%20plot.png)
-Bayram (Holiday) Search Google Trends
 
 
+![Kurban Search Google Trends](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/kurban%20trend%20plot.png)
 Kurban Search Google Trends
-![Bayram (Holiday) Search Google Trends](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/kurban%20trend%20plot.png)
-Bayram (Holiday) Search Google Trends
 
 
 
