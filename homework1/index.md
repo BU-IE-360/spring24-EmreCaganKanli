@@ -6,6 +6,8 @@ For this homework, 3 datasets from [TCMB website](https://evds2.tcmb.gov.tr/) an
 
 ## Model 1 - Clothing Expenditures and Holidays
 
+### Inspection of the Time Series
+
 In Turkey, it is common for people to buy new clothes before the religious holidays, namely Ramadan and Eid. In this sense, the data between clothing expenditures and holidays might be investigated.
 
 Assuming that people search about these holidays more when the date is close, the Google Trends data for search "Bayram" or "Ramazan" or "Kurban" can be checked.
@@ -37,6 +39,20 @@ After downloading the time series from their respective websites, all datasets w
 ![All Data Excel](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/all%20data%20excel.png)
 Some Observations From The Excel Containing All Data
 
+### Building the Model
+
+Firstly, there appears to be a trend in the Clothing data. Fittin a linear regression gives 22.8% MAPE, which is not bad but the plot shows that there is room for improvement.
+
+
+![Linear Regression of Clothing Data](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/lr%20wo%20log.png)
+Linear Regression of Clothing Data
+
+
+Visually, a log transformation seems it would be a better fit, and trying it gives 10.4% MAPE.
+
+
+![Regression of Clothing Data with log Transformation](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/lr%20wo%20log.png)
+Regression of Clothing Data with log Transformation
 
 
 
