@@ -40,7 +40,9 @@ Some Observations From The Excel Containing All Data
 
 ### Building the Model
 
-Firstly, there appears to be a trend in the Clothing data. The Augmented Dickey–Fuller test gives a p-value of 99.3%. We can also see that the data is not stationary by checking the ACF and PACF plots, .
+Firstly, checking the correlations between the search datas, we get .465 for Bayram and Ramazan, 0.675 for Bayram and Kurban and -0.00145 for Ramazan and Kurban. This is not surprising as the Bayram data closesly resembles the sum of Ramazan and Kurban data. We can use all and then decide which one to delete by checking the importance of coefficients.
+
+There appears to be a trend in the Clothing data. The Augmented Dickey–Fuller test gives a p-value of 99.3%. We can also see that the data is not stationary by checking the ACF and PACF plots, .
 
 
 ![ACF Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/acf_normal.png)
@@ -53,11 +55,11 @@ PACF Plot
 
 Taking the first difference and plotting again, the ACF and PACF are closer to ideal. The Augmented Dickey–Fuller test gives 1.41e-07%, which indicates a stationary time series. The mean of the data is closer to 0.
 
-![ACF Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/acf_diff.png)
+![ACF Plot of First Difference](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/acf_diff.png)
 ACF Plot
 
 
-![PACF Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/pacf_diff.png)
+![PACF Plot of First Difference](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/pacf_diff.png)
 PACF Plot
 
 
@@ -94,11 +96,13 @@ The only non-significant p-value is for the kurban search data, so we can take t
 We can also try the model by splitting the data into train and test. If we choose a holdout percentage of 20 and build the model again, we get a MAPE of 7.32% for the model without search data and 6.88% for the model including the search data.
 
 
-![Model 1 with Holdout](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/model%20summary.png)
+![Model 1 with Holdout](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/model%201%20holdout.png)
 Model 1 with Holdout
 
 
+### Conclusion
 
+The MAPE difference, the significance of coefficients, the visualization and everything points to the search data being influential on predicting the Clothes expenditure. The reason why Kurban data had a low p-value for significance or coefficient might be that since Ramazan is only a couple of months before Kurban, people might be buying clothes for Ramazan and using them for Kurban also. This can be seen on the Clothing plot, the peaks of Ramazan are higher than Kurban. So the model chose bayram because if explained the peaks, but then also chose Ramazan because it explained the height difference between Ramazan and Kurban.
 
 
 
