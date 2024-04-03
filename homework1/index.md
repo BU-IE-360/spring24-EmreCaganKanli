@@ -51,7 +51,7 @@ Linear Regression of Clothing Data
 Visually, a log transformation seems it would be a better fit, and trying it gives 10.4% MAPE.
 
 
-![Regression of Clothing Data with log Transformation](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/lr%20wo%20log.png)
+![Regression of Clothing Data with log Transformation](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/lr%20w%20log.png)
 Regression of Clothing Data with log Transformation
 
 
