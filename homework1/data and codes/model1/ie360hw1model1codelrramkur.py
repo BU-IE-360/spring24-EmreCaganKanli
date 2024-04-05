@@ -24,12 +24,12 @@ X_test = X.iloc[:].copy()
 t_train = t.iloc[:].copy()
 t_test = t.iloc[:].copy()
 
-# SARIMAX model without exogenous variable X
+# Linear model
 model = sm.OLS(y_train, X_train)
 results = model.fit()
 print(results.summary())
 
-# Forecast without exogenous variable X
+# Forecast of the model
 forecast = results.predict(X_test)
 forecast = pd.DataFrame(forecast).apply(lambda x: np.exp(x))
 model_residuals = y_test.apply(lambda x: np.exp(x)).values - forecast.values
@@ -41,11 +41,9 @@ plt.show()
 
 # Calculate MAPE
 mape = mean_absolute_percentage_error(y_test.apply(lambda x: np.exp(x)), forecast)
+print("MAPE of the model:", mape)
 
-# Print MAPE values
-print("MAPE without exogenous variable X:", mape)
-
-# Plot actual vs forecast for both cases
+# Plot actual vs forecast
 plt.plot(y.index, y.apply(lambda x: np.exp(x)), label='Actual')
 plt.plot(y.index, forecast, label='Forecast without exog X')
 plt.legend()
