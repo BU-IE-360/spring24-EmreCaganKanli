@@ -40,9 +40,9 @@ plt.show()
 
 # Calculate MAPE
 mape = mean_absolute_percentage_error(y_test.apply(lambda x: np.exp(x)), forecast)
-print("MAPE without exogenous variable X:", mape)
+print("MAPE of the model:", mape)
 
-# Plot actual vs forecast for both cases
+# Plot actual vs forecast
 plt.plot(y.index, y.apply(lambda x: np.exp(x)), label='Actual')
 plt.plot(y.index, forecast, label='Forecast without exog X')
 plt.legend()
