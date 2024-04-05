@@ -32,11 +32,12 @@ It can be argued that the peaks of Clothing Data matches with the Bayram dates a
 
 ### Pulling and Organizing the Data
 
-After downloading the time series from their respective websites, all datasets were combined into one excel sheet with an additional t value for time purposes.
+After downloading the time series from their respective websites, all datasets were combined into one excel sheet with an additional t value for time purposes. A constant feature for intercept was added afterwards in code.
 
 
 ![All Data Excel](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/all%20data%20excel.png)
 Some Observations From The Excel Containing All Data
+
 
 ### Building the Model
 
@@ -78,11 +79,11 @@ Log Transform First Difference Plot
 To see which features to use we can check the correlations between the search data. We get .465 for Bayram and Ramazan, .675 for Bayram and Kurban and -.00145 for Ramazan and Kurban. This is not surprising as the Bayram data closesly resembles the sum of Ramazan and Kurban data. We can try two models with one having bayram and the other having ramazan and kurban.
 
 
-![Model 1.1](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/model%201.1.png)
+![Model 1.1](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/model%201.1%20plot.png)
 Model 1.1 with feature bayram
 
 
-![Model 1.2](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/model%201.2.png)
+![Model 1.2](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/model%201.2%20plot.png)
 Model 1.2 with features ramazan and kurban
 
 
@@ -101,25 +102,86 @@ p-value of the F-statistic is very low, showing that the model is promising. The
 The significance of coefficients, p-value of the F-statistic, the visualization and everything points to the bayram search data being influential on predicting the Clothes expenditure. The reason why bayram data captured the peaks better than ramazan and kurban might be the fluctuations towards the end. Since the bayram search data has no values there, it is no influenced by those fluctuations. However, it might be the case that the ramazan and kurban data fit too much to those data at the endthat they lose the ability to predict peaks.
 
 
+## Model 2 - House Sales, Seasonality and House for Sale Search
+
+### Inspection of the Time Series
+
+TCMB data from House Sales is a monthly time series, from 2013-01 to 2024-02 with 134 datapoints. Plotting the House Sales Time Series, we can try to make some suggestions.
+
+
+![House Sales Time Series Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model2/House%20Sales%20Plot.png)
+House Sales Time Series Plot
+
+
+There appears to be some seasonality, which we can see by noticing a peak every december, for example. The question we will try to answer is whether seasonilty really has an effect her and can house fo sale search data cover the remaining variance.
+
+
+![House for Sale Search Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model2/House%20for%20Sale%20Search%20Plot.png)
+House for Sale Search Plot
+
+The peak in the summer 2020 on both plots suggest that there might be a correlation between the dependent and independant datt.
+
+
+### Pulling and Organizing the Data
+
+After downloading the time series from their respective websites, all datasets were combined into one excel sheet with an additional t value for time purposes and dummy variable for each month. A constant feature for intercept was added afterwards in code for one of the models.
+
+
+![All Data Excel](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model2/all%20data%20excel.png)
+Some Observations From The Excel Containing All Data
+
+
+### Building the Model
+
+The p-value from the Augmented Dickey–Fuller test at first comes out to be 13.4%. This is not low enough, but seasonality plays a big role here. Checking the ACF and PACF plots also show that the non-stationary situation is not that significant.
+
+
+![ACF Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/acf_normal.png)
+ACF Plot
+
+
+![PACF Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/pacf_normal.png)
+PACF Plot
+
+
+There are two ways of implementing seasonality: Using all dummy variables and no intercept or using one less dummy variable and using and intercept. The plots of these two will be the same, with the same MAPE of 14.3%, but their interpretations and statistics may vary.
+
+
+![Model 2 Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model2/model%202.png)
+Model 2 Plot
+
+
+Since the p-values of the coefficients when there is no constant is better, we can take that as the base model and comment on it.
+
+
+![Model 2 Summary](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model2/model%202%20summary.png)
+Model 2 Summary
+
+
+### Conclusion
+
+Each p-value of the coefficients are very small, so all of them are significant. The low p-value of ev feature shows that House for Sales search was significant in predicting the House Sales. The p-value of the F-statistic is also low, which means that the model is significant. The coefficient of trend is negative, but not very large compared to other numbers, so it can be argued that there is a small trend down. The R^2 value is low, but this can be attributed to the low trend level. 
+
+
+## Model 3
+
+
+### Inspection of the Time Series
+
+
+### Pulling and Organizing the Data
+
+
+### Building the Model
+
+
+### Conclusion
 
 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
