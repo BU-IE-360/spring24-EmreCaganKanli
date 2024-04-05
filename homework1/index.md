@@ -6,9 +6,9 @@ For this homework, 3 datasets from [TCMB website](https://evds2.tcmb.gov.tr/) an
 
 ## Model 1 - Clothing Expenditures and Holidays
 
-### Inspection of the Time Series
-
 In Turkey, it is common for people to buy new clothes before the religious holidays, namely Ramadan and Eid. In this sense, the data between clothing expenditures and holidays might be investigated. To have data on how close the holiday dates are and how much people think about these holidays, we can assume that people search about them more when they are close.
+
+### Inspection of the Time Series
 
 The clothing expenditure data can be pulled from TCMB Website and search data can be acquired from Google Trends. All datasets are weekly, ranging from 21/05/2021 to 22/03/2024 with 149 datapoints. 
 
@@ -104,6 +104,8 @@ The significance of coefficients, p-value of the F-statistic, the visualization 
 
 ## Model 2 - House Sales, Seasonality and House for Sale Search
 
+People buy houses all the time, but the amount might be investigated. A good candidate of a feature predicting how much people think about buying houses might be when people search House for Sales.
+
 ### Inspection of the Time Series
 
 TCMB data from House Sales is a monthly time series, from 2013-01 to 2024-02 with 134 datapoints. Plotting the House Sales Time Series, we can try to make some suggestions.
@@ -136,11 +138,11 @@ Some Observations From The Excel Containing All Data
 The p-value from the Augmented Dickey–Fuller test at first comes out to be 13.4%. This is not low enough, but seasonality plays a big role here. Checking the ACF and PACF plots also show that the non-stationary situation is not that significant.
 
 
-![ACF Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/acf_normal.png)
+![ACF Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model2/acf.png)
 ACF Plot
 
 
-![PACF Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model1/pacf_normal.png)
+![PACF Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model2/pacf.png)
 PACF Plot
 
 
@@ -163,25 +165,92 @@ Model 2 Summary
 Each p-value of the coefficients are very small, so all of them are significant. The low p-value of ev feature shows that House for Sales search was significant in predicting the House Sales. The p-value of the F-statistic is also low, which means that the model is significant. The coefficient of trend is negative, but not very large compared to other numbers, so it can be argued that there is a small trend down. The R^2 value is low, but this can be attributed to the low trend level. 
 
 
-## Model 3
+## Model 3 - Euro EXchange Rate and President
 
+President Recep Tayyip Erdoğan is arguably the most influencial person in Turkey in many aspects. As he is the one having the last say in many decisions, including economy, what he is doing and saying might influance the exchange rates.
 
 ### Inspection of the Time Series
+
+The exchange rate of Euro can be used as a standart foreign currency. The data from TCMB goes from 28-05-2021 to 29-03-2024, with 149 datapoints. How much people think that the president is influancing the economy might be related with how much they search his name on Google.
+
+
+![Euro Time Series](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model3/euro%20time%20series.png)
+Euro Time Series
+
+
+![Recep Tayyip Erdoğan Search Time Series](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model3/rte%20time%20series.png)
+Recep Tayyip Erdoğan Search Time Series
+
+
+The jumps of Euro plot show a relation with the peaks of search data, can be investigated.
 
 
 ### Pulling and Organizing the Data
 
 
+After downloading the time series from their respective websites, all datasets were combined into one excel sheet with an additional t value for time purposes.
+
+
+![All Data Excel](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model3/all%20data%20excel.png)
+Some Observations From The Excel Containing All Data
+
+
 ### Building the Model
+
+
+The p-value from the Augmented Dickey–Fuller test at first comes out to be 98.2% because there is a clear trend.
+
+
+![ACF Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model3/acf_normal.png)
+ACF Plot
+
+
+![PACF Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model3/pacf_normal.png)
+PACF Plot
+
+
+Taking the first difference and trying again, we get a p-value of 8.00e-15.
+
+
+![ACF Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model3/acf_diffl.png)
+ACF Plot
+
+
+![PACF Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model3/pacf_diff.png)
+PACF Plot
+
+
+Residuals also look stationary.
+
+
+![Residuals](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model3/residuals.png)
+Residuals
+
+
+Building a linear model with all the features, we get the following plot.
+
+
+![Model 3.1 Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model3/model%203.1%20plot.png)
+Model 3.1 Plot
+
+
+However, it is easy to see that this is not a good fit. We can try a log transform to capture an exponential growth.
+
+
+![Model 3.2 Plot](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model3/model%203.2%20plot.png)
+Model 3.2 Plot
+
+
+The summary of this second plot is as follows.
+
+
+![Model 3 Summary](https://raw.githubusercontent.com/BU-IE-360/spring24-EmreCaganKanli/main/homework1/photos/model3/model%203%20summary.png)
+Model 3 Summary
+
+
+Low p-values for coefficient and F-statistic and high R^2 value might indicate a good fit. However, the ceofficient of the search data is negative, which is contradictery to the initial assumption.
 
 
 ### Conclusion
 
-
-
-
-
-
-
-
-
+Although the statistics are good and the plot is not far off, the sign of the coefficients tell a different story. We can argue that the correlation between the independant and dependant data is not very strong.
