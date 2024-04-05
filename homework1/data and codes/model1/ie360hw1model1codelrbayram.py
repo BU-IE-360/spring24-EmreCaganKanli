@@ -44,6 +44,6 @@ print("MAPE of the model:", mape)
 
 # Plot actual vs forecast
 plt.plot(y.index, y.apply(lambda x: np.exp(x)), label='Actual')
-plt.plot(y.index, forecast, label='Forecast without exog X')
+plt.plot(y.index, forecast, label='Forecast')
 plt.legend()
 plt.show()
